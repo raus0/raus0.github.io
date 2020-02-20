@@ -1,0 +1,99 @@
+body {
+    color:#333;
+    background-color:#191b22;
+    font-family:Verdana, sans-serif;
+    margin: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+}
+
+header {
+    background-color:#313543;
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
+.conteiner {
+    position: relative;
+    padding: 120px 100px;
+    background-image: url(https://scontent-sjc3-1.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/85259309_1044262609281456_3889054247183440853_n.jpg?_nc_ht=scontent-sjc3-1.cdninstagram.com&_nc_cat=100&_nc_ohc=hif-6L9wD-EAX_tGILa&oh=19e932a474f1b0cc71c2fda8d3659fd9&oe=5EE9EB6E);
+    border-radius: 5px;
+    background-size: cover;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+}
+
+.conteiner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 5px;
+  }
+
+.icon img {
+    border-radius: 50%;
+    /* border-width: 4px;
+    border-style: solid;
+    border-color: white; */
+    position: relative;
+}
+
+.info {
+    position: relative;
+    color: #fff;
+}
+
+.info h1 {
+    font-weight: normal;
+    font-size: 24px;
+    margin: 0;
+}
+
+.info p{
+    margin: 0;
+    margin-bottom: 16px;
+}
+
+.works {
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.works > h1 {
+    font-weight: normal;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.works > section {
+    margin-bottom: 60px;
+}
+
+.works > section > h1 {
+    font-weight: normal;
+}
+
+.works > p {
+    line-height: 1.8;
+}
+
+footer p {
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 60px;
+    color: gray;
+}
