@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Classic Freak</title>
   <subtitle>島根県民の管理人の雑記です。</subtitle>
-  <updated>2023-09-27T22:09:43+09:00</updated>
+  <updated>2023-09-27T22:44:51+09:00</updated>
   <author>
     <name>rauszero</name>
     <uri>http://localhost:4000/</uri>
@@ -17,6 +17,68 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>Google Colabで均衡表の活用</title>
+    <link href="http://localhost:4000/posts/gc-equilibrium/" rel="alternate" type="text/html" title="Google Colabで均衡表の活用" />
+    <published>2023-09-26T16:30:00+09:00</published>
+  
+    <updated>2023-09-26T16:30:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/gc-equilibrium/</id>
+    <content src="http://localhost:4000/posts/gc-equilibrium/" />
+    <author>
+      <name>rauszero</name>
+    </author>
+
+  
+    
+    <category term="Programming" />
+    
+    <category term="Python" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      環境構築
+
+Google Colabを利用するのが簡単なのでこちらの方法を記載します。
+
+Dockerで実装してましたがPCに負荷がかかってるので…
+
+Googleのコンピュータに負担してもらいます。
+
+無料のサービスですがこの程度の処理なら全然問題なく使えます。
+
+ライブラリのインポート
+!pip install mplfinance
+!pip install yfinance
+
+
+ライブラリからインストール
+import datetime
+
+import pandas as pd
+from pandas_datareader import data
+
+import matplotlib.pyplot as plt
+%matplotlib inline
+import matplotlib.style as style
+
+import mplfinance as mpf
+import...
+    </summary>
+  
+
+  </entry>
 
   
   <entry>

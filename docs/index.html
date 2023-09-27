@@ -41,12 +41,13 @@
 <link rel="canonical" href="http://localhost:4000/" />
 <meta property="og:url" content="http://localhost:4000/" />
 <meta property="og:site_name" content="Classic Freak" />
+<link rel="next" href="http://localhost:4000/page2" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Classic Freak" />
 <meta name="twitter:site" content="@rauszero" />
 <meta name="google-site-verification" content="google_meta_tag_verification" />
 <script type="application/ld+json">
-{"url":"http://localhost:4000/","@type":"WebSite","headline":"Classic Freak","sameAs":["https://twitter.com/rauszero","https://github.com/raus0"],"description":"島根県民の管理人の雑記です。","name":"rauszero","@context":"https://schema.org"}</script>
+{"name":"rauszero","url":"http://localhost:4000/","@type":"WebSite","headline":"Classic Freak","description":"島根県民の管理人の雑記です。","sameAs":["https://twitter.com/rauszero","https://github.com/raus0"],"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -497,6 +498,98 @@
 
   <div class="post-preview">
     <h1>
+      <a href="/posts/gc-equilibrium/">Google Colabで均衡表の活用</a>
+    </h1>
+
+    <div class="post-content">
+      <p>
+        
+
+
+
+
+
+        環境構築
+
+Google Colabを利用するのが簡単なのでこちらの方法を記載します。
+
+Dockerで実装してましたがPCに負荷がかかってるので…
+
+Googleのコンピュータに負担してもらいます。
+
+無料のサービスですがこの程度の処理なら全然問題なく使えます。
+
+ライブラリのインポート
+!pip install mplfinance
+!pip install yfinance
+
+
+ライブ...
+      </p>
+    </div>
+
+    <div class="post-meta text-muted d-flex justify-content-between">
+
+      <div>
+        <!-- posted date -->
+        <i class="far fa-calendar fa-fw"></i>
+        <!--
+  Date format snippet
+  See: /assets/js/_utils/timeage.js
+-->
+
+
+
+
+
+
+<span class="timeago "
+  
+    data-toggle="tooltip"
+    data-placement="bottom"
+    title="Tue, Sep 26, 2023,  4:30 PM +0900"
+  >Sep 26<i class="unloaded">2023-09-26T16:30:00+09:00</i>
+</span>
+
+
+        <!-- time to read -->
+        <i class="far fa-clock fa-fw"></i>
+        <!--
+  Calculate the post's reading time, and display the word count in tooltip
+ -->
+
+
+
+<!-- words per minute  -->
+
+
+
+
+
+
+
+
+
+
+<!-- return element -->
+<span class="readtime" data-toggle="tooltip" data-placement="bottom"
+  title="1570 words">8 min</span>
+
+
+        <!-- page views -->
+        
+      </div>
+
+      
+
+    </div> <!-- .post-meta -->
+
+  </div> <!-- .post-review -->
+
+
+
+  <div class="post-preview">
+    <h1>
       <a href="/posts/ruby-setup/">Ruby環境構築</a>
     </h1>
 
@@ -680,104 +773,6 @@ $ ...
 
 
 
-  <div class="post-preview">
-    <h1>
-      <a href="/posts/javascript-basic/">JavaScript基礎</a>
-    </h1>
-
-    <div class="post-content">
-      <p>
-        
-
-
-
-
-
-        変数宣言
-
-var
-上書き・再宣言可能
-
-let
-上書き可能 再宣言不可能
-
-const
-上書き・再宣言不可能
-
-※ 文字列・数値は一度設定した値が変わらないことが保証されるが
-
-JSのオブジェクトや配列に関しては値を変えることができてしまう
-
-constで定義したオブジェクト・配列にはプロパティの変更が可能
-
-文字列の連結
-
-従来の連結
-const kind = "不可解";
-const ...
-      </p>
-    </div>
-
-    <div class="post-meta text-muted d-flex justify-content-between">
-
-      <div>
-        <!-- posted date -->
-        <i class="far fa-calendar fa-fw"></i>
-        <!--
-  Date format snippet
-  See: /assets/js/_utils/timeage.js
--->
-
-
-
-
-
-
-<span class="timeago "
-  
-    data-toggle="tooltip"
-    data-placement="bottom"
-    title="Fri, Dec 24, 2021,  9:55 PM +0900"
-  >Dec 24, 2021<i class="unloaded">2021-12-24T21:55:00+09:00</i>
-</span>
-
-
-        <!-- time to read -->
-        <i class="far fa-clock fa-fw"></i>
-        <!--
-  Calculate the post's reading time, and display the word count in tooltip
- -->
-
-
-
-<!-- words per minute  -->
-
-
-
-
-
-
-
-
-
-
-<!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom"
-  title="1517 words">8 min</span>
-
-
-        <!-- page views -->
-        
-      </div>
-
-      
-
-    </div> <!-- .post-meta -->
-
-  </div> <!-- .post-review -->
-
-
-
 </div> <!-- #post-list -->
 
 
@@ -818,17 +813,34 @@ const ...
 
   
 
+    
+    
+    
+    
+    
+
+    
+
+    
+      <!-- show number -->
+      <li class="page-item ">
+        <a class="page-link btn-box-shadow" href="/page2/">2</a>
+      </li>
+    
+
+  
+
   <!-- mobile pagination -->
   <li class="page-index align-middle">
     <span>1</span>
-    <span class="text-muted">/ 1</span>
+    <span class="text-muted">/ 2</span>
   </li>
 
   <!-- right arrow -->
   
 
-  <li class="page-item disabled">
-    <a class="page-link btn-box-shadow" href="#" aria-label="next-page">
+  <li class="page-item ">
+    <a class="page-link btn-box-shadow" href="/page2" aria-label="next-page">
       <i class="fas fa-angle-right"></i>
     </a>
   </li>
@@ -926,6 +938,36 @@ const ...
         
         
 
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
 
 
   <div id="access-tags">
@@ -938,6 +980,9 @@ const ...
     
       
       <a class="post-tag" href="/tags/javascript/">JavaScript</a>
+    
+      
+      <a class="post-tag" href="/tags/python/">Python</a>
     
       
       <a class="post-tag" href="/tags/ruby/">Ruby</a>
@@ -1066,6 +1111,36 @@ const ...
         
         
 
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+    
+  
+    
+    
+    
+    
+      
+        
+        
+
 
 
   <div id="access-tags">
@@ -1078,6 +1153,9 @@ const ...
     
       
       <a class="post-tag" href="/tags/javascript/">JavaScript</a>
+    
+      
+      <a class="post-tag" href="/tags/python/">Python</a>
     
       
       <a class="post-tag" href="/tags/ruby/">Ruby</a>
