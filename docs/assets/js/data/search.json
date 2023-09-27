@@ -1,0 +1,49 @@
+[
+  
+  {
+    "title": "Ruby環境構築",
+    "url": "/posts/ruby-setup/",
+    "categories": "Programming, Ruby",
+    "tags": "Ruby",
+    "date": "2021-12-26 16:30:00 +0900",
+    
+
+
+
+
+
+    "snippet": "環境構築rbenvのインストールrubyのバージョン管理ツールとりあえずはdockerを使わずに手元の環境でセットアップHomebrew(Macのパッケージ管理ツール)を先にインストールしておく(方法は割愛)Homebrew経由でrbenvをインストール$ brew install rbenvrbenvの初期設定$ rbenv init実行するとevalから始まる以下の1行が表示される筆者はzshを使ってるので.zshrcに記述(.zprofileでも可)無い場合は作成するeval &quot;$(rbenv init - zsh)&quot;記述したらターミナルを再起動して準備完了セットアップ診断用スクリプトの実行$ curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash筆者の環境で実行するとこんなエラーが出たrbenv shimsの環境パスが通ってないぽいChecking for rbenv shims in PATH: not found.zshrcに先ほどの1行を以下の3行に記述# rbenveval &quot;$(rbenv init -)&quot;export PATH=&quot;~/.rbenv/bin:$PATH&quot;export PATH=&quot;~/.rbenv/bin:~/.rbenv/shims:$PATH&quot;再度診断用スクリプトを実行すると以下のようになったChecking for `rbenv&#39; in PATH: /usr/local/bin/rbenvChecking for rbenv shims in PATH: OKChecking `rbenv install&#39; support: /usr/local/bin/rbenv-install (ruby-build 20211109)Counting installed Ruby versions: 1 versionsChecking RubyGems settings: OKAuditing installed plugins: OKrbenv shimsの環境パスがちゃんと通ってる 大丈夫そうRubyのバージョンを指定してインストール末尾に-Lオプションを指定するとインストール可能なバージョンの一覧が表示される$ rbenv install -L今回は現時点での最新の安定版？である3.0.2もインストールした(時間かかった)$ rbenv install 3.0.2使用するrubyのバージョンの切り替えインストールしたばかりのrubyの場合はrbenv rehashで切り替え可能な状態になる$ rbenv rehashインストールされてるrubyの一覧を表示する$ rbenv versions現状ではrbenvでインストールした3.0.2ではなくrbenvを使わずに入れたシステムのrubyが使用される状態になってる* system  3.0.2rbenv globalで切り替える$ rbenv global 3.0.2再度rbenv versionsで確認(ruby -vで確認してもOK)system* 3.0.2 (set by /Users/xuqxu/.rbenv/version)無事切り替わったことを確認Rubyを実行してみるirbの起動$ irbこんな感じになって対話的(インタラクティブ)にrubyを実行できる(pryというものもある)抜けるときはexitと入力ちなみにBom Diaはポルトガル語でおはよう[~] raus0 $ irbirb(main):001:0&amp;gt; puts &#39;Bom Dia&#39;Bom Dia=&amp;gt; nilirb(main):002:0&amp;gt; exit[~] raus0 $rbファイルを作成して実行とりあえず作業用ディレクトリを適当に作成して移動筆者はホームディレクトリにrubyディレクトリを作成しているのでその中にplaygroundという作業用ディレクトリを作成して移動sample.rbというrubyファイルを作成してVSCodeで開いた[~] raus0 $ cd ruby[~/ruby] raus0 $ mkdir playground[~/ruby] raus0 $ lsplayground	raus0.github.io[~/ruby] raus0 $ cd playground[~/ruby/playground] raus0 $ touch sample.rb[~/ruby/playground] raus0 $ code .VSCodeか任意のエディタでsample.rbを以下のように編集puts &#39;Bom Dia&#39;ターミナルでこのように実行して出力されればOK[~/ruby/playground] raus0 $ ruby sample.rbBom Diapryについてpryはirbと同じように対話的(インタラクティブ)にrubyを実行するためのツールこういったツールのことをREPL (Read-Eval-Print Loop)と呼ぶらしい入力されたコードを読んで評価して表示することを繰り返すirbは標準でrubyに付いてくるけど pryはGemでインストールするパッケージpryはirbの機能に加えてコードに色付けをしたり自動的にインデントを入れてくれたりするコードの補完機能もあるらしい Tabで補完 2回Tabを押すと候補表示pryのインストール$ gem install prypryの起動$ pryこのように自動でインデントを入れてくれたり色分けされたりする(色は実際にターミナルで確かめてください)[~/ruby/playground] raus0 $ pry[1] pry(main)&amp;gt; class Author[1] pry(main)*   attr_accessor :name[1] pry(main)* end=&amp;gt; [:name, :name=][2] pry(main)&amp;gt; author1 = Author.new=&amp;gt; #&amp;lt;Author:0x00007f7df73250b0&amp;gt;[3] pry(main)&amp;gt; author1.name = &#39;羅&#39;=&amp;gt; &quot;羅&quot;[4] pry(main)&amp;gt; author1.name=&amp;gt; &quot;羅&quot;[5] pry(main)&amp;gt; author1=&amp;gt; #&amp;lt;Author:0x00007f7df73250b0 @name=&quot;羅&quot;&amp;gt;[6] pry(main)&amp;gt;Rubyの特徴インタプリタ型言語明示的にプログラムをコンパイルする必要がない実際にコードを実行するタイミングで逐一機械語にコンパイルしてくれる手軽にコードを実行して結果を確認できるオブジェクト指向言語Rubyではあらゆるものがオブジェクトとして扱われるオブジェクトを簡単に言うとデータと特定の処理を行うメソッドをまとめたもの構文の自由度が高い一つの機能を作るにも様々な書き方ができる自由度が高いと楽しい反面 どんなコードになるかは書いた人の技量次第複雑で汚いコードにも簡潔で綺麗なコードにもなりえる国産の言語(島根県松江市が聖地)Rubyの開発者は島根県の松江市在住「島根にパソコンなんてあるわけないじゃん」ってフレーズが流行ったけど富士通の工場があるし 当然PCもある島根にないものはパソコンではなく新幹線同じ山陰地方でも鳥取はまだ恵まれている(島根並感)"
+  },
+  
+  {
+    "title": "GitHubにEd25519鍵を生成して渡す方法",
+    "url": "/posts/github-ed25519-key/",
+    "categories": "Programming, Git",
+    "tags": "Git",
+    "date": "2021-12-25 15:55:00 +0900",
+    
+
+
+
+
+
+    "snippet": "鍵の生成とGitHubへの登録公開鍵と秘密鍵を作成$ ssh-keygen -t ed25519 -C &quot;GitHubに登録したemail&quot;実行したら3つ入力(そのままEnterかパスフレーズ)~/.ssh/configに記述Host *UseKeyChain yesIdentityFile ~/.ssh/id_ed25519公開鍵の中身をクリップボードにコピー$ pbcopy &amp;lt;~/.ssh/id_ed25519.pubGitHubに公開鍵を登録GitHubを開いて/settings/ssh/newに移動 任意の名前と中身を貼り付けて登録完了過去に作った古いアカウントによってアクセス拒否されるときはキーチェーンアクセスを起動して検索フォームからキーワード「git」で検索問題の古いアカウントのパスワードがピックアップされるので削除UseKeyChain yesは無くても問題ないやも複数アカウントを使いたい場合とりあえず自分はターミナルからユーザー名を入力で切り替えられるようにしたhttps://t.co/HTo28yjS58&amp;mdash; Яɑ  (@rauszero) September 25, 2021どのGitHubのアカウントか一目でわかるように~/.zshrcにこんな感じで記述してるexport PROMPT=&amp;quot;%F{cyan}[%~]%f `git config user.name&amp;lt;/a&amp;gt;` \\$ &amp;quot;[]の中にカレントディレクトリ 現在のGitHubのアカウント\\$は一般ユーザーの時 $ rootの時 # を表示 Macのターミナルのユーザー名の変更&amp;mdash; Яɑ  (@rauszero) September 25, 2021~/.ssh/configはこんな感じに記述Host github-xuqxu  HostName github.com  IdentityFile ~/.ssh/xuqxu  User git  Port 22  TCPKeepAlive yes  IdentitiesOnly yesHost github-raus0  HostName github.com  IdentityFile ~/.ssh/raus0  User git  Port 22  TCPKeepAlive yes  IdentitiesOnly yesssh-agentを使う場合(使わんでもOK)ssh-agentを起動$ eval &quot;$(ssh-agent -s)&quot;作成したSSH鍵をssh-agentに登録$ ssh-add -K ~/.ssh/id_ed25519~/.ssh/configに以下追記`AddKeysToAgent yes以下トラブルシューティングforkしたリポジトリ限定でサブ垢によるpushがメイン垢によって拒否される キーチェーンから削除してもダメ&amp;mdash; Яɑ  (@rauszero) September 25, 2021ssh-agentに鍵が余分に登録されてたから$ ssh-add -D で全部消した各鍵を作り直して登録したら解決https://t.co/ObDKsWtGnf&amp;mdash; Яɑ  (@rauszero) September 25, 2021"
+  },
+  
+  {
+    "title": "JavaScript基礎",
+    "url": "/posts/javascript-basic/",
+    "categories": "Programming, JavaScript",
+    "tags": "JavaScript",
+    "date": "2021-12-24 21:55:00 +0900",
+    
+
+
+
+
+
+    "snippet": "変数宣言var上書き・再宣言可能let上書き可能 再宣言不可能const上書き・再宣言不可能※ 文字列・数値は一度設定した値が変わらないことが保証されるがJSのオブジェクトや配列に関しては値を変えることができてしまうconstで定義したオブジェクト・配列にはプロパティの変更が可能文字列の連結従来の連結const kind = &quot;不可解&quot;;const skill = &quot;魔法&quot;;// 不可解系です 魔法はかけられませんconst msg1 = kind + &quot;系です &quot; + skill + &quot;はかけられません&quot;;console.log(msg1);テンプレートリテラルconst msg2 = `${kind}系です ${skill}はかけられません`;console.log(msg2);アロー関数従来の関数1function func0(str) {  return str;}console.log(func0(&quot;func0です&quot;));従来の関数2const func1 = function(str) {  return str;}console.log(func1(&quot;func1です&quot;));アロー関数const func2 = (str) =&amp;gt; {  return str;}console.log(func2(&quot;func2です&quot;));アロー関数 省略記法const func3 = str =&amp;gt; str;console.log(func3(&quot;func3です&quot;));処理が一行で終わってそれを返却するような時は波括弧やreturnの記述を省略することができるconst func4 = (num1, num2) =&amp;gt; {  return num1 % num2;}console.log(func4(3, 6));const func5 = (num1, num2) =&amp;gt; num1 % num2;console.log(func5(6, 9));分割代入const myProfileObj = {  kind: &quot;不可解&quot;,  skill: &quot;魔法&quot;,};// オブジェクトから要素を抜き出すconst msg2 = `${myProfileObj.kind}系です ${myProfileObj.skill}はかけられません`;console.log(msg2);// 分割代入const { kind, skill } = myProfileObj;const msg3 = `${kind}系です ${skill}はかけられません`;console.log(msg3);// 配列から要素を抜き出すconst myProfileArray = [&quot;ドラクエ&quot;, &quot;呪文&quot;];const msg4 = `${myProfileArray[0]}系です ${myProfileArray[1]}はかけられません`;console.log(msg4);// 配列で分割代入を用いる際は順番に注意const [kind2, skill2] = myProfileArray;const msg5 = `${kind2}系です ${skill2}はかけられません`;console.log(msg5);デフォルト値// デフォルト値未設定const sayHello = (name) =&amp;gt; console.log(`Hello!${name}!`);// Hello!raus!sayHello(&quot;raus&quot;);// Hello!undefined!sayHello();// デフォルト値設定const sayHello2 = (name = &quot;raus&quot;) =&amp;gt; console.log(`Hello!${name}!`);// Hello!raus!sayHello2();スプレッド構文// 配列の展開const arr1 = [1, 2];// [1, 2]console.log(arr1);//　配列の中身を順番に処理して展開 1 2console.log(...arr1);// 例const sumFunc = (num1,num2) =&amp;gt; console.log(num1 + num2);// 3sumFunc(arr1[0], arr1[1]);// 3sumFunc(...arr1);// まとめるconst arr2 = [1, 2, 3, 4];const [num1, num2, ...arr3] = arr2;console.log(num1); // 1console.log(num2); // 2console.log(arr3); // [3, 4]※ この方法で配列をコピーすることにより 参照を引き継がないので arr6に操作を加えても 元の配列に影響を与えないconst arr4 = [10, 20];const arr5 = [30, 40];const arr6 = [...arr4];arr6[0] = 100;console.log(arr6); // [100, 20]const arr7 = [...arr4, ...arr5];console.log(arr7); // [10, 20, 30, 40]※ =で配列をコピーしてしまうと結果的に同じところを参照してしまうため arr8に操作を加えると 元の配列が影響を受けてしまい不具合の元となる動きをしてしまうconst arr4 = [10, 20];const arr8 = arr4;arr8[0] = 100;console.log(arr8); // [100, 20]console.log(arr4); // [100, 20]mapやfilterを使った配列の処理従来のfor文による処理const categoryArr = [&quot;ABOUT&quot;, &quot;BLOG&quot;, &quot;CODE&quot;];for (let index = 0; index &amp;lt; categoryArr.length; index++) {  console.log(categoryArr[index]);}mapによる処理・配列をループして処理をする・戻り値に基づいて新しい配列を作成const categoryArr = [&quot;ABOUT&quot;, &quot;BLOG&quot;, &quot;CODE&quot;];const categoryArr2 = categoryArr.map((name) =&amp;gt; {	return name;})console.log(categoryArr2);省略記法const categoryArr = [&quot;ABOUT&quot;, &quot;BLOG&quot;, &quot;CODE&quot;];categoryArr.map((name) =&amp;gt; console.log(name));// 何番目か出すcategoryArr.map((name, index) =&amp;gt; console.log(`${index + 1}番目は${name}です`));filterによる処理・配列から条件に一致するものだけ抽出const numArr = [1, 2, 3, 4, 5];const newNumArr = numArr.filter((num) =&amp;gt; {	return num % 2 === 1; // 奇数});console.log(newNumArr);三項演算子const val1 = 1 &amp;gt; 0 ? `trueです` : `falseです`;console.log(val1); // trueですconst num = 1300;console.log(num.toLocaleString()); // 数値のみconst num = &quot;1300&quot;;const formattedNum = typeof num === &#39;number&#39; ? num.toLocaleString() : &#39;数値を入力してください&#39;;console.log(formattedNum); // 数値を入力してくださいconst checkSum = (num1, num2) =&amp;gt; {	return num1 + num2 &amp;gt; 100 ? &#39;100を超えています！！&#39; : &#39;許容範囲内です&#39;;}console.log(checkSum(50, 40)); // 許容範囲内です論理演算子の本当の意味const flag1 = true;const flag2 = false;// ×　またはif (flag1 || flag2) {	console.log(&quot;1か2かはtrueになります&quot;);}// ×　かつif (flag1 &amp;amp;&amp;amp; flag2) {	console.log(&quot;1か2かはtrueになります&quot;);}左がfalseなら右を返すconst num = null;const fee = num || &quot;金額未設定です&quot;;console.log(fee); // 金額未設定です左がtrueなら左を返すconst num = 100;const fee = num || &quot;金額未設定です&quot;;console.log(fee); // 100左がtrueなら右を返すconst num = 100;const fee = num &amp;amp;&amp;amp; &quot;何か設定されました&quot;;console.log(fee); // 100左がfalseなら左を返すconst num = null;const fee = num &amp;amp;&amp;amp; &quot;何か設定されました&quot;;console.log(fee); // 100"
+  }
+  
+]
+

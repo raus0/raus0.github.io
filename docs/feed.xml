@@ -1,0 +1,223 @@
+
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>http://localhost:4000/</id>
+  <title>Classic Freak</title>
+  <subtitle>島根県民の管理人の雑記です。</subtitle>
+  <updated>2023-09-27T22:09:43+09:00</updated>
+  <author>
+    <name>rauszero</name>
+    <uri>http://localhost:4000/</uri>
+  </author>
+  <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml"/>
+  <link rel="alternate" type="text/html" hreflang="ja"
+    href="http://localhost:4000/"/>
+  <generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator>
+  <rights> © 2023 rauszero </rights>
+  <icon>/assets/img/favicons/favicon.ico</icon>
+  <logo>/assets/img/favicons/favicon-96x96.png</logo>
+
+
+  
+  <entry>
+    <title>Ruby環境構築</title>
+    <link href="http://localhost:4000/posts/ruby-setup/" rel="alternate" type="text/html" title="Ruby環境構築" />
+    <published>2021-12-26T16:30:00+09:00</published>
+  
+    <updated>2021-12-26T16:30:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/ruby-setup/</id>
+    <content src="http://localhost:4000/posts/ruby-setup/" />
+    <author>
+      <name>rauszero</name>
+    </author>
+
+  
+    
+    <category term="Programming" />
+    
+    <category term="Ruby" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      環境構築
+
+rbenvのインストール
+rubyのバージョン管理ツール
+
+とりあえずはdockerを使わずに手元の環境でセットアップ
+
+Homebrew(Macのパッケージ管理ツール)を先にインストールしておく(方法は割愛)
+
+Homebrew経由でrbenvをインストール
+
+$ brew install rbenv
+
+
+rbenvの初期設定
+$ rbenv init
+
+
+実行するとevalから始まる以下の1行が表示される
+
+筆者はzshを使ってるので.zshrcに記述(.zprofileでも可)
+
+無い場合は作成する
+
+eval "$(rbenv init - zsh)"
+
+
+記述したらターミナルを再起動して準備完了
+
+セットアップ診断用スクリプトの実行
+$ curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>GitHubにEd25519鍵を生成して渡す方法</title>
+    <link href="http://localhost:4000/posts/github-ed25519-key/" rel="alternate" type="text/html" title="GitHubにEd25519鍵を生成して渡す方法" />
+    <published>2021-12-25T15:55:00+09:00</published>
+  
+    <updated>2021-12-25T15:55:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/github-ed25519-key/</id>
+    <content src="http://localhost:4000/posts/github-ed25519-key/" />
+    <author>
+      <name>rauszero</name>
+    </author>
+
+  
+    
+    <category term="Programming" />
+    
+    <category term="Git" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      鍵の生成とGitHubへの登録
+公開鍵と秘密鍵を作成
+$ ssh-keygen -t ed25519 -C "GitHubに登録したemail"
+
+実行したら3つ入力(そのままEnterかパスフレーズ)
+
+~/.ssh/configに記述
+Host *
+UseKeyChain yes
+IdentityFile ~/.ssh/id_ed25519
+
+
+公開鍵の中身をクリップボードにコピー
+$ pbcopy &amp;lt;~/.ssh/id_ed25519.pub
+
+
+GitHubに公開鍵を登録
+GitHubを開いて/settings/ssh/newに移動 任意の名前と中身を貼り付けて登録完了
+
+過去に作った古いアカウントによってアクセス拒否されるときは
+
+キーチェーンアクセスを起動して検索フォームからキーワード「git」で検索
+
+問題の古いアカウントのパスワードがピックアップされるので削除
+...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>JavaScript基礎</title>
+    <link href="http://localhost:4000/posts/javascript-basic/" rel="alternate" type="text/html" title="JavaScript基礎" />
+    <published>2021-12-24T21:55:00+09:00</published>
+  
+    <updated>2021-12-24T21:55:00+09:00</updated>
+  
+    <id>http://localhost:4000/posts/javascript-basic/</id>
+    <content src="http://localhost:4000/posts/javascript-basic/" />
+    <author>
+      <name>rauszero</name>
+    </author>
+
+  
+    
+    <category term="Programming" />
+    
+    <category term="JavaScript" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      変数宣言
+
+var
+上書き・再宣言可能
+
+let
+上書き可能 再宣言不可能
+
+const
+上書き・再宣言不可能
+
+※ 文字列・数値は一度設定した値が変わらないことが保証されるが
+
+JSのオブジェクトや配列に関しては値を変えることができてしまう
+
+constで定義したオブジェクト・配列にはプロパティの変更が可能
+
+文字列の連結
+
+従来の連結
+const kind = "不可解";
+const skill = "魔法";
+
+// 不可解系です 魔法はかけられません
+const msg1 = kind + "系です " + skill + "はかけられません";
+
+console.log(msg1);
+
+
+テンプレートリテラル
+const msg2 = `${kind}系です ${skill}はかけられません`;
+
+console.log(msg2);
+
+
+アロー関数
+
+従来の関数1
+fu...
+    </summary>
+  
+
+  </entry>
+
+</feed>
+
+
