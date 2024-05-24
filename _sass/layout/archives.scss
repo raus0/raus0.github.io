@@ -64,14 +64,12 @@
 
       &:nth-child(odd) {
         background-color: var(--main-bg, #ffffff);
-        background-image: linear-gradient(
-          to left,
-          #ffffff,
-          #fbfbfb,
-          #fbfbfb,
-          #fbfbfb,
-          #ffffff
-        );
+        background-image: linear-gradient(to left,
+            #ffffff,
+            #fbfbfb,
+            #fbfbfb,
+            #fbfbfb,
+            #ffffff);
       }
 
       &::before {
@@ -86,7 +84,9 @@
     &:last-child li:last-child::before {
       height: 1.5rem;
     }
-  } /* #archives ul */
+  }
+
+  /* #archives ul */
 
   .date {
     white-space: nowrap;
@@ -131,7 +131,9 @@
       z-index: 1;
     }
   }
-} /* #archives */
+}
+
+/* #archives */
 
 @media all and (max-width: 576px) {
   #archives {

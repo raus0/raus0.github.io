@@ -6,7 +6,7 @@ categories: [Programming, Python]
 tags: [Python]
 ---
 
-# 環境構築
+## 環境構築
 
 Google Colabを利用するのが簡単なのでこちらの方法を記載します。
 
@@ -16,13 +16,13 @@ Googleのコンピュータに負担してもらいます。
 
 無料のサービスですがこの程度の処理なら全然問題なく使えます。
 
-## ライブラリのインポート
+### ライブラリのインポート
 ```python
-pip install mplfinance
-pip install yfinance
+!pip install mplfinance
+!pip install yfinance
 ```
 
-## ライブラリからインストール
+### ライブラリからインストール
 ```python
 import datetime
 
@@ -38,7 +38,7 @@ import yfinance as yf
 yf.pdr_override()
 ```
 
-## 一目均衡表作成
+### 一目均衡表作成
 ```python
 def glaph(symbol, start, end, time):
     df = data.get_data_yahoo(symbol, start, end, interval=time)
@@ -93,7 +93,7 @@ def glaph(symbol, start, end, time):
     plt.show()
 ```
 
-## 各基本数値足の陰陽数カウント
+### 各基本数値足の陰陽数カウント
 ```python
 def multi_basic(symbol, start, end, time, *slow_values):
     df = data.get_data_yahoo(symbol, start, end, interval=time)
@@ -137,21 +137,21 @@ def multi_basic(symbol, start, end, time, *slow_values):
     return df
 ```
 
-# 使用方法
+## 使用方法
 
-## 表示制限の解除
+### 表示制限の解除
 ```python
 pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
 ```
 
-## 過去1年間の期間を指定
+### 過去1年間の期間を指定
 ```python
 end = datetime.datetime.today()
 start = (pd.Period(end, 'D') - 365).start_time
 ```
 
-## グラフの描画
+### グラフの描画
 ```python
 # 日経平均の週足の例 glaph('^N225', start, end, '1wk')
 # 個別株の日足の例  glaph('6098.T', start, end, '1d')
@@ -161,7 +161,7 @@ start = (pd.Period(end, 'D') - 365).start_time
 glaph('6098.T', start, end, '1wk')
 ```
 
-## 各基本数値足の陰陽数を表示
+### 各基本数値足の陰陽数を表示
 ```python
 # 各基本数値を必要な数だけ指定可能 日足で3と5しか使わないなら以下のようになる
 # df = multi_basic('5010.T', start, end, '1d', 3, 5)
@@ -169,7 +169,7 @@ df = multi_basic('5010.T', start, end, '1d', 3, 5, 9, 13, 17, 21, 26, 33, 42)
 df
 ```
 
-## 時間論の基本数値・複合数値
+### 時間論の基本数値・複合数値
 基本数値 【9　：一節 × 】 【 17：二節 △ 】 【26：一期（三節) ⚪︎ 】
 
 複合基本数値
@@ -200,14 +200,14 @@ df
 
 ・676：一巡環（三環）
 
-## 基本数値足について
+### 基本数値足について
 例えば3日足であれば3本前の寄りつきを始値として、当日の引けを終値として作成する。
 
 髭の無いローソク足になるのが特徴。
 
 陰陽を見るだけなら遅行スパンの日数を変えれば簡単に見ることができる。
 
-## あとがき
+### あとがき
 均衡表は自分が最も信頼して使ってる切り札です。特に遅行スパンの動きを見ています。
 
 そのパラメータは26だけでなく、各基本数値を碁石のように並べて使うことができるそうです。
