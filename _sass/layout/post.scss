@@ -23,7 +23,7 @@ header {
   }
 
   .post-meta {
-    span + span::before {
+    span+span::before {
       @include dot;
     }
 
@@ -39,8 +39,9 @@ header {
     }
   }
 
-  h1 + .post-meta {
+  h1+.post-meta {
     margin-top: 1.5rem;
+    font-size: 100%;
   }
 }
 
@@ -53,7 +54,7 @@ header {
   .license-wrapper {
     line-height: 1.2rem;
 
-    > a {
+    >a {
       @extend %text-highlight;
 
       &:hover {
@@ -64,7 +65,9 @@ header {
     span:last-child {
       @extend %text-sm;
     }
-  } /* .license-wrapper */
+  }
+
+  /* .license-wrapper */
 
   .post-meta a:not(:hover) {
     @extend %link-underline;
@@ -90,7 +93,7 @@ header {
         @extend %icon-size;
       }
 
-      > * {
+      >* {
         @extend %icon-size;
 
         margin-left: 0.5rem;
@@ -109,8 +112,12 @@ header {
 
         @extend %cursor-pointer;
       }
-    } /* .share-icons */
-  } /* .share-wrapper */
+    }
+
+    /* .share-icons */
+  }
+
+  /* .share-wrapper */
 }
 
 .share-mastodon {
@@ -189,10 +196,13 @@ header {
     margin-top: 0.3rem;
     white-space: normal;
   }
-} /* .post-navigation */
+}
+
+/* .post-navigation */
 
 @media (hover: hover) {
   .post-navigation {
+
     .btn,
     .btn::before {
       transition: all 0.35s ease-in-out;
@@ -260,6 +270,7 @@ header {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      font-size: 115%;
 
       &:hover {
         color: var(--toc-highlight);
@@ -293,7 +304,7 @@ header {
 /* --- Related Posts --- */
 
 #related-posts {
-  > h3 {
+  >h3 {
     @include label(1.1rem, 600);
   }
 
@@ -346,7 +357,7 @@ header {
   .post-tail-bottom {
     flex-wrap: wrap-reverse !important;
 
-    > div:first-child {
+    >div:first-child {
       width: 100%;
       margin-top: 1rem;
     }
@@ -354,7 +365,7 @@ header {
 }
 
 @media all and (max-width: 768px) {
-  .content > p > img {
+  .content>p>img {
     max-width: calc(100% + 1rem);
   }
 }

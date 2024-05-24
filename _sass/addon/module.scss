@@ -16,7 +16,8 @@
     margin-bottom: 1.25rem;
 
     &:focus {
-      outline: none; /* avoid outline in Safari */
+      outline: none;
+      /* avoid outline in Safari */
     }
   }
 }
@@ -55,8 +56,8 @@
 }
 
 %link-hover {
-  color: #d2603a !important;
-  border-bottom: 1px solid #d2603a;
+  color: #b6a489 !important;
+  // border-bottom: 1px solid #d2603a;
   text-decoration: none;
 }
 
@@ -96,7 +97,7 @@
 }
 
 %img-caption {
-  + em {
+  +em {
     display: block;
     text-align: center;
     font-style: normal;
