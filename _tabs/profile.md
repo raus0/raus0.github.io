@@ -31,7 +31,7 @@ order: 5
 
 過去にGBA(ゲームボーイアドバンス)のソフトのハックやポケモン二次創作の界隈で活動していました.
 
-旧サイト Classic Freak  [http://sealeaves.blog.fc2.com/](http://sealeaves.blog.fc2.com/)
+旧サイト Classic Freak  [https://sealeaves.blog.fc2.com/](https://sealeaves.blog.fc2.com/)
 
 界隈での愛称はらうソと言います. その他の名義は葉っぱ ラツオなど様々です.
 
