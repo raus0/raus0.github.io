@@ -1,7 +1,7 @@
 ---
 title: SNSのリスクと個人サイトの重要性
 author: raus
-date: 2026-02-08 15:30:00 +0800
+date: 2026-01-30 15:30:00 +0800
 categories: [雑感]
 tags: [個人サイト, GitHubPages, SNS]
 ---
