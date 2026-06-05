@@ -33,8 +33,4 @@ order: 5
 
 旧サイト Classic Freak  [https://sealeaves.blog.fc2.com/](https://sealeaves.blog.fc2.com/)
 
-顔文字は当時プログラマの方々がアラビア文字で顔文字つくる遊びをしてたから、気に入ったやつを拝借した感じです。
-
 ここまでプロフィールを読んでくださり、ありがとうございました。
-
-`ڡ´
